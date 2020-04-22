@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>成长银行下载 GBank Download</title>
+    <style type="text/css">
+        html,body{margin:0;padding: 0;font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";font-size: 16px;color: #333;}
+        .wx-tip{position: relative;top:35px;width: 80%;padding: 10px;margin: auto;background: #e9e9e9;line-height: 30px;text-align: center;display: none;}
+        .high-light{color: #2ea516;}
+    </style>
+</head>
+<body>
+    <div id="wx_tipzh" class="wx-tip">请点击「<span class="high-light">右上角</span>」按钮，在弹出的菜单中选择【<span class="high-light">在浏览器中打开</span>】</div>
+	<div id="wx_tipen" class="wx-tip">Please click「<span class="high-light">right-top</span>」button，then chose【<span class="high-light">open in web brower</span>】</div>
+    <script type="text/javascript">
+        var browser = {
+            versions:function(){
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/)||!!u.match(/AppleWebKit/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }()
+        };
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            if(browser.versions.ios){
+                //document.getElementById('wx_tip').innerHTML = 'iOS版正在游向出海口，敬请期待';
+                document.getElementById('wx_tipzh').innerHTML = '请点击「<span class="high-light">右上角</span>」按钮，在弹出的菜单中选择【<span class="high-light">在Safari中打开</span>】';
+				document.getElementById('wx_tipen').innerHTML = 'Please click「<span class="high-light">right-top</span>」button，then chose【<span class="high-light">open in web brower</span>】';
+            }
+            document.getElementById('wx_tipzh').style.display = 'block';
+			document.getElementById('wx_tipen').style.display = 'block';
+        }else{
+            if(browser.versions.ios){
+                //document.getElementById('wx_tip').innerHTML = 'iOS版正在游向出海口，敬请期待';
+                //document.getElementById('wx_tip').style.display = 'block';
+                window.top.location.href='itms-services:///?action=download-manifest&url=https://htcgbank.oss-cn-shanghai.aliyuncs.com/ios-release/gbank.latest.plist';
+            }else{
+                window.top.location.href='https://htcgbank.oss-cn-shanghai.aliyuncs.com/apk-release/gbank.latest.apk';
+            }
+        }
+    </script>
+</body>
+</html>
